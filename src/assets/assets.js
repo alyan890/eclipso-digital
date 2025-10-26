@@ -30,18 +30,30 @@ import sun_icon from './sun_icon.svg'
 import moon_icon from './moon_icon.svg'
 import logo from './logo.svg'
 import bg from './bgg.jpg'
+import react from './react.png'
+import js from './js.webp'
+import next from './next-js.png'
+import wordpress from './wordpress.png'
+import elementor from './elementor.png'
+import woocommerce from './woocommerce.png'
+import shopify from './shopify.png'
+import flutter from './flutter.png'
+import earth from './earth.jpg'
 
 
 export const company_logos = [
-  microsoft_logo,
-  zoom_logo,
-  rakuten_logo,
-  coinbase_logo,
-  airbnb_logo,
-  google_logo,
+  react,
+  js,
+  next,
+  wordpress,
+  elementor,
+  woocommerce,
+  shopify,
+  flutter
 ]
 
 const assets = {
+  earth,
   bg,
   logo,
   arrow_icon,

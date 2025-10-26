@@ -1,39 +1,65 @@
-import React from 'react'
-import { company_logos } from '../assets/assets'
-import { motion } from "framer-motion"
+import React from "react";
+import { motion } from "framer-motion";
+import { company_logos } from "../assets/assets";
 
-const TrustedBy = () => {
+const TechStack = () => {
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-      className='flex flex-col items-center px-4 sm:px-12 lg:px-24 xl:px-40 gap-10 text-gray-700  bg-white dark:text-white/80  dark:bg-gray-900'>
-      <motion.h3
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        viewport={{ once: true }}
-        className='font-semibold'>Trusted by leading Companies</motion.h3>
-      <motion.div
-        initial="hidden"
-        whileInView="visible"
-        transition={{staggerChildren: 0.1}}
-        viewport={{ once: true }}
-        className='flex flex-center justify-center flex-wrap gap-10 m-4'>
-        {company_logos.map((logo, index) => (
-          <motion.img
-          variants={{ 
-            hidden: {opacity: 0, y: 10},
-            visible: {opacity: 1, y: 0},
-           }}
-           transition={{ duration: 0.4 }}
-          key={index} src={logo} alt='' className='max-h-5 sm:max-h-6 dark:drop-shadow-xl' />
-        ))}
-      </motion.div>
-    </motion.div>
-  )
-}
+    <section
+      id="tech"
+      className="relative flex flex-col items-center justify-center text-center py-24 px-6 sm:px-12 lg:px-32 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white overflow-hidden"
+    >
+      {/* Background Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-100/40 to-transparent dark:via-gray-800/30"></div>
 
-export default TrustedBy
+      {/* Heading */}
+      <div className="relative z-10">
+        <motion.h2
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="text-3xl sm:text-4xl font-extrabold mb-6"
+        >
+          Technologies We Use
+        </motion.h2>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ delay: 0.3, duration: 0.5 }}
+          viewport={{ once: true }}
+          className="text-gray-500 dark:text-gray-300 max-w-2xl mx-auto text-sm sm:text-base mb-10"
+        >
+          Our projects are powered by the latest and most reliable technologies.
+        </motion.p>
+      </div>
+
+      {/* 🔁 Marquee Row */}
+      <div className="relative w-full overflow-hidden py-6">
+        {/* Motion track */}
+        <motion.div
+          className="flex gap-16 sm:gap-24"
+          animate={{
+            x: ["0%", "-100%"],
+          }}
+          transition={{
+            repeat: Infinity,
+            duration: 20,
+            ease: "linear",
+          }}
+        >
+          {[...company_logos, ...company_logos].map((logo, index) => (
+            <img
+              key={index}
+              src={logo}
+              alt={`tech-${index}`}
+              className="h-20 sm:h-18 object-contain opacity-80 hover:opacity-100 transition-all"
+            />
+          ))}
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
+export default TechStack;
