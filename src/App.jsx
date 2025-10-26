@@ -41,7 +41,7 @@ function App() {
     }
   }, [])
 
-  const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'light')
+  const [theme, setTheme] = useState(localStorage.getItem('theme') ? localStorage.getItem('theme') : 'dark')
   return (
     <>
       <div className='dark:bg-gray-900 relative'>
