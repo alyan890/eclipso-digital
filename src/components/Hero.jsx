@@ -11,26 +11,23 @@ const Hero = () => {
   });
 
   // Parallax effect for background
-  const yBg = useTransform(scrollYProgress, [0, 1], [0, 150]); // move background slower for depth
+  const yBg = useTransform(scrollYProgress, [0, 1], [0, 150]);
 
   return (
     <div
       ref={ref}
       id="hero"
-      className="relative flex flex-col items-center gap-6 py-40 sm:py-56 px-4 sm:px-12 lg:px-40 text-center w-full overflow-hidden text-gray-700 bg-white dark:text-white dark:bg-gray-900"
+      className="relative flex flex-col items-center gap-6 py-40 sm:py-56 px-4 sm:px-12 lg:px-40 text-center w-full overflow-hidden bg-[#020014] text-white"
     >
-      {/* 🔹 Background Image with Parallax */}
-      <motion.div
-        style={{ y: yBg }}
-        className="absolute inset-0 z-0"
-      >
+      {/* 🌍 Earth Background with Parallax */}
+      <motion.div style={{ y: yBg }} className="absolute inset-0 z-0">
         <img
           src={assets.earth}
           alt="Hero background"
-          className="w-full h-full object-cover opacity-30 dark:opacity-20"
+          className="w-full h-full object-cover opacity-25"
         />
-        {/* Optional gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-white/70 via-white/30 to-white/70 dark:from-gray-900/80 dark:via-gray-900/50 dark:to-gray-900/80"></div>
+        {/* Dark overlay for depth */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020014]/90 via-[#030018]/70 to-[#05001c]/90"></div>
       </motion.div>
 
       {/* 🔸 Trusted Badge */}
@@ -39,15 +36,15 @@ const Hero = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.3 }}
         viewport={{ once: true }}
-        className="inline-flex items-center gap-2 border border-gray-300 dark:border-gray-700 p-1.5 pr-4 rounded-full bg-white/70 dark:bg-gray-800/60 backdrop-blur-sm z-10"
+        className="inline-flex items-center gap-2 border border-white/10 p-1.5 pr-4 rounded-full bg-white/5 backdrop-blur-md z-10"
       >
         <img className="w-20" src={assets.group_profile} alt="Group profile" />
-        <p className="text-xs font-medium">Trusted by 10K+ people</p>
+        <p className="text-xs font-medium text-gray-300">Trusted by 10K+ people</p>
       </motion.div>
 
       {/* 🔸 Animated Heading */}
       <motion.h1
-        className="text-4xl sm:text-5xl md:text-6xl xl:text-[84px] font-extrabold xl:leading-[95px] text-amber-300 max-w-5xl flex flex-wrap justify-center gap-3 z-10"
+        className="text-4xl sm:text-5xl md:text-6xl xl:text-[84px] font-extrabold xl:leading-[95px] text-transparent bg-clip-text bg-gradient-to-r from-amber-300 via-yellow-200 to-orange-400 max-w-5xl flex flex-wrap justify-center gap-3 z-10"
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
@@ -76,26 +73,11 @@ const Hero = () => {
                 },
               },
             }}
-            className={
-              word.toLowerCase() === "digital"
-                ? "inline-block text-black dark:text-white transition-colors duration-300"
-                : "inline-block"
-            }
+            className="inline-block"
           >
             {word}
           </motion.span>
         ))}
-
-        {/* ✨ Subtle floating animation after appearing */}
-        <motion.div
-          initial={{ y: 0 }}
-          animate={{ y: [0, -5, 0] }}
-          transition={{
-            repeat: Infinity,
-            duration: 4,
-            ease: "easeInOut",
-          }}
-        />
       </motion.h1>
 
       {/* 🔸 Description */}
@@ -104,10 +86,9 @@ const Hero = () => {
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         viewport={{ once: true }}
-        className="text-sm sm:text-lg font-medium text-gray-600 dark:text-white/75 max-w-2xl pb-3 z-10"
+        className="text-sm sm:text-lg font-medium text-gray-400 max-w-2xl pb-3 z-10"
       >
-        We don’t just build websites or apps — we create experiences that
-        inspire, engage, and leave a lasting digital footprint.
+        At Eclipso, we turn creativity into code and imagination into impact — crafting digital experiences that shine beyond the ordinary.
       </motion.p>
     </div>
   );

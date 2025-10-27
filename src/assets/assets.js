@@ -39,6 +39,10 @@ import woocommerce from './woocommerce.png'
 import shopify from './shopify.png'
 import flutter from './flutter.png'
 import earth from './earth.jpg'
+import laptop from './laptop.png'
+import mobapp from './mob-app.png'
+import graphic from './graphic.png'
+import video from './video-edit.png'
 
 
 export const company_logos = [
@@ -79,7 +83,11 @@ const assets = {
   logo_dark,
   menu_icon_dark,
   sun_icon,
-  moon_icon
+  moon_icon,
+  laptop,
+  mobapp,
+  graphic,
+  video
 }
 
 export default assets
