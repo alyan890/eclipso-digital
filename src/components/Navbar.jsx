@@ -79,15 +79,16 @@ const Navbar = ({ theme, setTheme }) => {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: "-100%", opacity: 0 }}
             transition={{ duration: 0.6, ease: "easeInOut" }}
-            className="fixed inset-0 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center space-y-10 text-3xl sm:text-4xl font-bold text-white z-50"
+            className="fixed inset-0 bg-black/95 backdrop-blur-md flex flex-col items-center justify-center space-y-10 text-3xl sm:text-4xl font-extrabold text-amber-300 z-50"
           >
             {/* Close Button */}
-            <img
-              src={assets.close_icon}
-              alt="Close"
-              onClick={() => setSidebarOpen(false)}
-              className="w-6 absolute top-8 right-8 cursor-pointer"
-            />
+           <img
+  src="data:image/svg+xml,%3csvg%20viewBox='0%200%2024%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cg%20id='Menu%20/%20Close_LG'%3e%3cpath%20d='M21%2021L12%2012M12%2012L3%203M12%2012L21.0001%203M12%2012L3%2021.0001'%20stroke='%23ffffff'%20stroke-width='2'%20stroke-linecap='round'%20stroke-linejoin='round'%3e%3c/path%3e%3c/g%3e%3c/svg%3e"
+  alt="Close"
+  onClick={() => setSidebarOpen(false)}   // 👈 ye line functionality add karegi
+  className="w-6 absolute top-8 right-8 cursor-pointer z-[60]"
+/>
+
 
             {/* Background gradient effects */}
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(0,200,255,0.15),transparent_70%)] opacity-50"></div>
