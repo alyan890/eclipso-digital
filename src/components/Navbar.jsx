@@ -39,8 +39,8 @@ const Navbar = ({ theme, setTheme }) => {
           <a href="#services" className="hover:text-amber-300 transition-colors">
             Services
           </a>
-          <a href="#our-work" className="hover:text-amber-300 transition-colors">
-            Our Work
+          <a href="#our-process" className="hover:text-amber-300 transition-colors">
+            Our Process
           </a>
           <a href="#contact-us" className="hover:text-amber-300 transition-colors">
             Contact Us
@@ -95,7 +95,7 @@ const Navbar = ({ theme, setTheme }) => {
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(75,0,255,0.15),transparent_60%)] opacity-40"></div>
 
             {/* Menu Links */}
-            {["Home", "Services", "Our Work", "Contact Us"].map((item, i) => (
+            {["Home", "Services", "Our Process", "Contact Us"].map((item, i) => (
               <motion.a
                 key={i}
                 href={

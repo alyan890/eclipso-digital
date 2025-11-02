@@ -6,7 +6,8 @@ const TechStack = () => {
   return (
     <section
       id="tech"
-      className="relative flex flex-col items-center justify-center text-center py-24 px-6 sm:px-12 lg:px-32 bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-white overflow-hidden"
+       className="relative flex flex-col items-center px-6 sm:px-12 lg:px-32 py-24 
+      bg-white text-gray-800 dark:bg-black dark:text-white overflow-hidden transition-colors duration-500"
     >
       {/* Background Gradient */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-100/40 to-transparent dark:via-gray-800/30"></div>
