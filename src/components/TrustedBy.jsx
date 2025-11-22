@@ -1,8 +1,20 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { company_logos } from "../assets/assets";
 
 const TechStack = () => {
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const check = () => setIsDarkMode(
+      typeof document !== 'undefined' && document.documentElement.classList.contains('dark')
+    );
+    check();
+    const mo = new MutationObserver(() => check());
+    mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+    return () => mo.disconnect();
+  }, []);
+
   return (
     <section
       id="tech"
@@ -50,9 +62,9 @@ const TechStack = () => {
           }}
         >
           {[...company_logos, ...company_logos].map((logo, index) => {
-            // make Next.js logo visible by inverting only that asset
-            const isNext = typeof logo === 'string' && /next(-|_)?js|next-js|next/.test(logo.toLowerCase())
-            const style = isNext ? { filter: 'invert(1) brightness(2)' } : undefined
+            // make dark logos (Next.js, Flutter, etc.) visible by inverting/brightening those assets when in dark mode
+            const isDarkLogo = typeof logo === 'string' && /(next(-|_)?js|next-js|next|flutter)/.test(logo.toLowerCase());
+            const style = isDarkLogo && isDarkMode ? { filter: 'invert(1) brightness(2)' } : undefined;
             return (
               <img
                 key={index}
