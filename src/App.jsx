@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState, Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
+import PromoModal from './components/PromoModal'
 import Footer from './components/Footer'
 // Lazy-load larger, non-critical sections to improve initial load
 const TrustedBy = lazy(() => import('./components/TrustedBy'))
@@ -69,6 +70,7 @@ function App() {
       <div className='dark:bg-gray-900 relative'>
         <Toaster />
         <Navbar theme={theme} setTheme={setTheme} />
+        <PromoModal theme={theme} />
         <Hero />
         <Suspense fallback={<div />}> 
           <TrustedBy />
