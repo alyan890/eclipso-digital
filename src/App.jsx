@@ -71,26 +71,31 @@ function App() {
         <Toaster />
         <Navbar theme={theme} setTheme={setTheme} />
         <PromoModal theme={theme} />
-        <Hero />
-        <Suspense fallback={<div />}> 
-          <TrustedBy />
-        </Suspense>
 
-        <Suspense fallback={<div />}>
-          <Services />
-        </Suspense>
+        {/* Center main sections on small screens; left-align on larger screens */}
+        <div className="w-full flex flex-col items-center text-center sm:items-stretch sm:text-left">
+          <Hero />
 
-        <Suspense fallback={<div />}>
-          <OurWork />
-        </Suspense>
+          <Suspense fallback={<div />}> 
+            <TrustedBy />
+          </Suspense>
 
-        <Suspense fallback={<div />}>
-          <Teams />
-        </Suspense>
+          <Suspense fallback={<div />}>
+            <Services />
+          </Suspense>
 
-        <Suspense fallback={<div />}>
-          <ContactUs />
-        </Suspense>
+          <Suspense fallback={<div />}>
+            <OurWork />
+          </Suspense>
+
+          <Suspense fallback={<div />}>
+            <Teams />
+          </Suspense>
+
+          <Suspense fallback={<div />}>
+            <ContactUs />
+          </Suspense>
+        </div>
 
         <Footer theme={theme} />
 
