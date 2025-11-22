@@ -114,4 +114,4 @@ const OurProcess = () => {
   );
 };
 
-export default OurProcess;
+export default React.memo(OurProcess);

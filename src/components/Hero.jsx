@@ -10,8 +10,11 @@ const Hero = () => {
     offset: ["start start", "end start"],
   });
 
-  // Parallax effect for background
-  const yBg = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  // Parallax: stronger translate and scale for more visible movement
+  const yBg = useTransform(scrollYProgress, [0, 1], [0, 220]);
+  const scaleBg = useTransform(scrollYProgress, [0, 1], [1, 1.08]);
+  // Slightly more contrast on opacity so the bg fades a bit as you scroll
+  const opacityBg = useTransform(scrollYProgress, [0, 1], [0.98, 0.68]);
 
   return (
     <div
@@ -20,14 +23,18 @@ const Hero = () => {
       className="relative flex flex-col items-center gap-6 py-40 sm:py-56 px-4 sm:px-12 lg:px-40 text-center w-full overflow-hidden bg-[#020014] text-white"
     >
       {/* 🌍 Earth Background with Parallax */}
-      <motion.div style={{ y: yBg }} className="absolute inset-0 z-0">
+      <motion.div
+        style={{ y: yBg, scale: scaleBg, opacity: opacityBg, willChange: 'transform, opacity' }}
+        className="absolute inset-0 z-0 overflow-hidden"
+      >
         <img
           src={assets.earth}
           alt="Hero background"
-          className="w-full h-full object-cover opacity-25"
+          className="w-full h-full object-cover"
+          style={{ opacity: 0.75, transformOrigin: 'center center', willChange: 'transform, opacity' }}
         />
-        {/* Dark overlay for depth */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#020014]/90 via-[#030018]/70 to-[#05001c]/90"></div>
+        {/* Reduced dark overlay for better visibility; still provides contrast for text */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#020014]/60 via-[#030018]/45 to-[#05001c]/60 pointer-events-none"></div>
       </motion.div>
 
       {/* 🔸 Trusted Badge */}
@@ -94,4 +101,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default React.memo(Hero);

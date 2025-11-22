@@ -121,6 +121,8 @@ const Services = () => {
                 <img
                   src={service.icon}
                   alt={service.title}
+                  loading="lazy"
+                  decoding="async"
                   className="w-44 h-44 sm:w-56 sm:h-56 object-contain opacity-90"
                 />
               </motion.div>
@@ -144,4 +146,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default React.memo(Services);

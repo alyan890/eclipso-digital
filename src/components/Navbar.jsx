@@ -12,16 +12,16 @@ const Navbar = ({ theme, setTheme }) => {
         initial={{ opacity: 0, y: -50 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
-        className="flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 py-3 sticky top-0 z-50 backdrop-blur-xl font-medium bg-slate-50/70 dark:bg-gray-900/70 shadow-sm"
+        className="flex justify-between items-center px-4 sm:px-12 lg:px-24 xl:px-40 py-2 sticky top-0 z-50 backdrop-blur-xl font-medium bg-slate-50/70 dark:bg-gray-900/70 shadow-sm"
       >
         {/* ✅ Logo */}
         <a href="#" className="flex items-center">
           <img
             src={theme === "dark" ? assets.logo_dark : assets.logo}
             alt="Eclipso Digital Logo"
-            className="h-14 sm:h-14 w-auto object-contain transition-all duration-300"
+            className="h-12 sm:h-12 w-auto object-contain transition-all duration-300"
             style={{
-              transform: "scale(2.95)",
+              transform: "scale(2.4)",
               transformOrigin: "left center",
               filter:
                 theme === "light"
@@ -53,7 +53,7 @@ const Navbar = ({ theme, setTheme }) => {
           <img
             src={theme === "dark" ? assets.menu_icon_dark : assets.menu_icon}
             onClick={() => setSidebarOpen(true)}
-            className="w-8 sm:hidden cursor-pointer"
+            className="w-7 sm:hidden cursor-pointer"
             alt="Menu"
           />
 
@@ -63,7 +63,7 @@ const Navbar = ({ theme, setTheme }) => {
           {/* Connect Button */}
           <a
             href="#contact-us"
-            className="text-sm max-sm:hidden flex items-center gap-2 bg-primary text-white px-6 py-2 rounded-full cursor-pointer hover:scale-105 transition-all shadow-md"
+            className="text-sm max-sm:hidden flex items-center gap-2 bg-primary text-white px-5 py-2 rounded-full cursor-pointer hover:scale-105 transition-all shadow-md"
           >
             Connect
             <img src={assets.arrow_icon} width={14} alt="Arrow" />

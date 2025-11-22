@@ -1,13 +1,14 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState, Suspense, lazy } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
-import TrustedBy from './components/TrustedBy'
-import Services from './components/Services'
-import OurWork from './components/OurWork'
-import Teams from './components/Teams'
-import ContactUs from './components/ContactUs'
-import { Toaster } from 'react-hot-toast'
 import Footer from './components/Footer'
+// Lazy-load larger, non-critical sections to improve initial load
+const TrustedBy = lazy(() => import('./components/TrustedBy'))
+const Services = lazy(() => import('./components/Services'))
+const OurWork = lazy(() => import('./components/OurWork'))
+const Teams = lazy(() => import('./components/Teams'))
+const ContactUs = lazy(() => import('./components/ContactUs'))
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 
@@ -41,20 +42,23 @@ function App() {
 
     document.addEventListener('mousemove', handleMouseMove)
 
+    let rafId
     const animate = () => {
       position.current.x += (mouse.current.x - position.current.x) * 0.1
       position.current.y += (mouse.current.y - position.current.y) * 0.1
 
       if (dotRef.current && outlineRef.current) {
+        // use translate3d and hint at will-change for smoother GPU-driven transforms
         dotRef.current.style.transform = `translate3d(${mouse.current.x - 6}px, ${mouse.current.y - 6}px, 0)`
         outlineRef.current.style.transform = `translate3d(${position.current.x - 20}px, ${position.current.y - 20}px, 0)`
       }
-      requestAnimationFrame(animate)
+      rafId = requestAnimationFrame(animate)
     }
     animate()
 
     return () => {
       document.removeEventListener('mousemove', handleMouseMove)
+      if (rafId) cancelAnimationFrame(rafId)
     }
   }, [isDesktop])
 
@@ -66,11 +70,26 @@ function App() {
         <Toaster />
         <Navbar theme={theme} setTheme={setTheme} />
         <Hero />
-        <TrustedBy />
-        <Services />
-        <OurWork />
-        <Teams />
-        <ContactUs />
+        <Suspense fallback={<div />}> 
+          <TrustedBy />
+        </Suspense>
+
+        <Suspense fallback={<div />}>
+          <Services />
+        </Suspense>
+
+        <Suspense fallback={<div />}>
+          <OurWork />
+        </Suspense>
+
+        <Suspense fallback={<div />}>
+          <Teams />
+        </Suspense>
+
+        <Suspense fallback={<div />}>
+          <ContactUs />
+        </Suspense>
+
         <Footer theme={theme} />
 
         {/* ✅ Show mouse effect only on desktop */}

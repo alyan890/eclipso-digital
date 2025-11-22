@@ -3,14 +3,19 @@ import { motion } from "framer-motion"
 
 const ServiceCard = ({ service, index }) => {
 
-    const [position, setPosition] = useState({ x: 0, y: 0 })
     const [visible, setVisible] = useState(false);
 
     const divRef = useRef(null)
+    const glowRef = useRef(null)
 
-    const handleMouseMove = (e)=>{
+    // Avoid state updates on every mouse move — update glow position via ref/style for performance
+    const handleMouseMove = (e) => {
+        if (!divRef.current || !glowRef.current) return
         const bounds = divRef.current.getBoundingClientRect();
-        setPosition({x: e.clientX - bounds.left, y: e.clientY - bounds.top})
+        const x = e.clientX - bounds.left
+        const y = e.clientY - bounds.top
+        // use transform for GPU-accelerated updates
+        glowRef.current.style.transform = `translate3d(${x - 150}px, ${y - 150}px, 0)`
     }
 
     return (
@@ -19,15 +24,17 @@ const ServiceCard = ({ service, index }) => {
         whileInView={{ opacity: 1, y:  0 }}
         transition={{ duration: 0.5, delay:index * 0.2 }}
         viewport={{ once: true }}
-        className='relative overflow-hidden max-w-lg m-2 sm:m-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-2xl shadow-gray-100 dark:shadow-white/10' onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)} ref={divRef} onMouseMove={handleMouseMove}>
+        className='relative overflow-hidden max-w-lg m-2 sm:m-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-2xl shadow-gray-100 dark:shadow-white/10'
+        onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)} ref={divRef} onMouseMove={handleMouseMove}>
             <div
+                ref={glowRef}
                 className={`pointer-events-none blur-2xl rounded-full bg-gradient-to-r from-blue-500 to-purple-500 w-[300px] h-[300px] absolute z-0 transition-opacity duration-500 ${visible ? 'opacity-70' : 'opacity-0'} dark:mix-blend-lighten mix-blend-multiply`}
-                style={{ top: position.y - 150, left: position.x - 150 }}
+                style={{ willChange: 'transform, opacity' }}
             />
             <div className='flex items-center gap-10 p-8 hover:p-7.5 hover:m-0.5 transition-all rounded-[10px] bg-white dark:bg-gray-900 z-10 relative'>
 
                 <div className='bg-gray-100 dark:bg-gray-700 rounded-full'>
-                    <img src={service.icon} alt='' className='max-w-24 bg-white dark:bg-gray-900 rounded-full m-2' />
+                    <img src={service.icon} alt={service.title} loading='lazy' decoding='async' className='max-w-24 bg-white dark:bg-gray-900 rounded-full m-2' />
                 </div>
                 <div className='flex-1'>
                     <h3 className='font-bold'>{service.title}</h3>
@@ -38,4 +45,4 @@ const ServiceCard = ({ service, index }) => {
     )
 }
 
-export default ServiceCard
+export default React.memo(ServiceCard)

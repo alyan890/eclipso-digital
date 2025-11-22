@@ -13,13 +13,13 @@ const TechStack = () => {
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-gray-100/40 to-transparent dark:via-gray-800/30"></div>
 
       {/* Heading */}
-      <div className="relative z-10">
+      <div className="relative z-10 text-center">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="text-3xl sm:text-4xl text-amber-300 font-extrabold mb-6"
+          className="text-3xl sm:text-4xl text-amber-300 font-extrabold mb-6 mx-auto"
         >
           Technologies We Use
         </motion.h2>
@@ -36,7 +36,7 @@ const TechStack = () => {
       </div>
 
       {/* 🔁 Marquee Row */}
-      <div className="relative w-full overflow-hidden py-6">
+      <div className="relative w-full overflow-hidden py-6 flex justify-center">
         {/* Motion track */}
         <motion.div
           className="flex gap-16 sm:gap-24"
@@ -49,18 +49,26 @@ const TechStack = () => {
             ease: "linear",
           }}
         >
-          {[...company_logos, ...company_logos].map((logo, index) => (
-            <img
-              key={index}
-              src={logo}
-              alt={`tech-${index}`}
-              className="h-20 sm:h-18 object-contain opacity-80 hover:opacity-100 transition-all"
-            />
-          ))}
+          {[...company_logos, ...company_logos].map((logo, index) => {
+            // make Next.js logo visible by inverting only that asset
+            const isNext = typeof logo === 'string' && /next(-|_)?js|next-js|next/.test(logo.toLowerCase())
+            const style = isNext ? { filter: 'invert(1) brightness(2)' } : undefined
+            return (
+              <img
+                key={index}
+                src={logo}
+                alt={`tech-${index}`}
+                loading="lazy"
+                decoding="async"
+                style={style}
+                className="h-20 sm:h-18 object-contain opacity-80 hover:opacity-100 transition-all"
+              />
+            )
+          })}
         </motion.div>
       </div>
     </section>
   );
 };
 
-export default TechStack;
+export default React.memo(TechStack);
