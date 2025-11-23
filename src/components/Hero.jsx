@@ -20,7 +20,7 @@ const Hero = () => {
     <div
       ref={ref}
       id="hero"
-      className="relative flex flex-col items-center gap-6 py-40 sm:py-56 px-4 sm:px-12 lg:px-40 text-center w-full overflow-hidden bg-[#020014] text-white"
+      className="relative flex flex-col items-center gap-6 py-24 sm:py-56 px-4 sm:px-12 lg:px-40 text-center w-full overflow-hidden bg-[#020014] text-white"
     >
       {/* 🌍 Earth Background with Parallax */}
       <motion.div

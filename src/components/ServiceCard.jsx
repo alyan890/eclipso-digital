@@ -14,8 +14,11 @@ const ServiceCard = ({ service, index }) => {
         const bounds = divRef.current.getBoundingClientRect();
         const x = e.clientX - bounds.left
         const y = e.clientY - bounds.top
-        // use transform for GPU-accelerated updates
-        glowRef.current.style.transform = `translate3d(${x - 150}px, ${y - 150}px, 0)`
+        // use transform for GPU-accelerated updates; center based on glow size for responsive blobs
+        const glowRect = glowRef.current.getBoundingClientRect();
+        const gx = x - (glowRect.width / 2)
+        const gy = y - (glowRect.height / 2)
+        glowRef.current.style.transform = `translate3d(${gx}px, ${gy}px, 0)`
     }
 
     return (
@@ -28,7 +31,7 @@ const ServiceCard = ({ service, index }) => {
         onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)} ref={divRef} onMouseMove={handleMouseMove}>
             <div
                 ref={glowRef}
-                className={`pointer-events-none blur-2xl rounded-full bg-gradient-to-r from-blue-500 to-purple-500 w-[300px] h-[300px] absolute z-0 transition-opacity duration-500 ${visible ? 'opacity-70' : 'opacity-0'} dark:mix-blend-lighten mix-blend-multiply`}
+                className={`pointer-events-none blur-2xl rounded-full bg-gradient-to-r from-blue-500 to-purple-500 w-[50vw] sm:w-[300px] h-[50vw] sm:h-[300px] absolute z-0 transition-opacity duration-500 ${visible ? 'opacity-70' : 'opacity-0'} dark:mix-blend-lighten mix-blend-multiply`}
                 style={{ willChange: 'transform, opacity' }}
             />
             <div className='flex items-center gap-10 p-8 hover:p-7.5 hover:m-0.5 transition-all rounded-[10px] bg-white dark:bg-gray-900 z-10 relative'>

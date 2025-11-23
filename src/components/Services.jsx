@@ -56,21 +56,19 @@ const Services = () => {
       {/* 🌍 Soft Earth Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-b from-[#0a0220] via-[#060015] to-black opacity-90"></div>
 
-      {/* 🔵 Smooth glowing circle */}
-      {!isMobile && (
-        <motion.div
-          className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-gradient-to-r from-indigo-800/20 via-blue-700/10 to-purple-700/20 rounded-full blur-xl"
-          animate={{
-            scale: [1, 1.05, 1],
-            opacity: [0.4, 0.6, 0.4],
-          }}
-          transition={{
-            duration: 6,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      )}
+      {/* 🔵 Smooth glowing circle (responsive) */}
+      <motion.div
+        className="absolute -top-24 sm:-top-40 left-1/2 -translate-x-1/2 w-[60vw] sm:w-[800px] h-[60vw] sm:h-[800px] bg-gradient-to-r from-indigo-800/20 via-blue-700/10 to-purple-700/20 rounded-full blur-xl pointer-events-none"
+        animate={{
+          scale: [1, 1.05, 1],
+          opacity: [0.4, 0.6, 0.4],
+        }}
+        transition={{
+          duration: 6,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+      />
 
       {/* ✨ Particles (disabled on mobile for performance) */}
       {!isMobile &&
