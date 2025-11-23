@@ -26,7 +26,7 @@ const Footer = ({ theme }) => {
                         From strategy to execution, we craft digital solutions that move your
                         business forward.
                     </p>
-                    <ul className='flex gap-8'>
+                    <ul className='flex gap-8 justify-center lg:justify-start'>
                         <li><a className='hover:text-primary' href="#hero">Home</a></li>
                         <li><a className='hover:text-primary' href="#services">Services</a></li>
                         <li><a className='hover:text-primary' href="#our-work">Our work</a></li>
