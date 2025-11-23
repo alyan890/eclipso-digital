@@ -41,8 +41,8 @@ const Services = () => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: isMobile ? 0 : i * 0.15,
-        duration: isMobile ? 0.3 : 0.6,
+        delay: isMobile ? 0 : i * 0.08,
+        duration: isMobile ? 0.35 : 0.45,
         ease: "easeOut",
       },
     }),
@@ -60,11 +60,11 @@ const Services = () => {
       <motion.div
         className="absolute -top-24 sm:-top-40 left-1/2 -translate-x-1/2 w-[60vw] sm:w-[800px] h-[60vw] sm:h-[800px] bg-gradient-to-r from-indigo-800/20 via-blue-700/10 to-purple-700/20 rounded-full blur-xl pointer-events-none"
         animate={{
-          scale: [1, 1.05, 1],
-          opacity: [0.4, 0.6, 0.4],
+          scale: [1, 1.03, 1],
+          opacity: [0.45, 0.6, 0.45],
         }}
         transition={{
-          duration: 6,
+          duration: 10,
           repeat: Infinity,
           ease: "easeInOut",
         }}
@@ -72,7 +72,7 @@ const Services = () => {
 
       {/* ✨ Particles (disabled on mobile for performance) */}
       {!isMobile &&
-        [...Array(15)].map((_, i) => (
+        [...Array(6)].map((_, i) => (
           <motion.span
             key={i}
             className="absolute bg-white/30 rounded-full"
@@ -81,13 +81,14 @@ const Services = () => {
               left: `${Math.random() * 100}%`,
               width: `${Math.random() * 2 + 1}px`,
               height: `${Math.random() * 2 + 1}px`,
+              willChange: 'transform, opacity'
             }}
             animate={{
-              y: [0, -10, 0],
+              y: [0, -6, 0],
               opacity: [0.3, 0.8, 0.3],
             }}
             transition={{
-              duration: 3 + Math.random() * 2,
+              duration: 4 + Math.random() * 3,
               repeat: Infinity,
             }}
           />
@@ -109,19 +110,22 @@ const Services = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="group relative flex flex-col items-center p-8 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 hover:border-indigo-400/40 transition-all duration-500 will-change-transform"
+              className="group relative flex flex-col items-center p-8 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 hover:border-indigo-400/40 transition-all duration-400"
+              style={{ willChange: 'transform, opacity' }}
             >
               <motion.div
                 className="mb-6"
-                whileHover={{ scale: isMobile ? 1 : 1.08 }}
-                transition={{ duration: 0.3 }}
+                whileHover={{ scale: isMobile ? 1 : 1.06 }}
+                transition={{ duration: 0.22 }}
+                style={{ willChange: 'transform, opacity' }}
               >
                 <img
                   src={service.icon}
                   alt={service.title}
                   loading="lazy"
                   decoding="async"
-                  className="w-44 h-44 sm:w-56 sm:h-56 object-contain opacity-90"
+                  className="w-36 h-36 sm:w-44 sm:h-44 md:w-56 md:h-56 object-contain opacity-90"
+                  style={{ willChange: 'transform, opacity' }}
                 />
               </motion.div>
 
