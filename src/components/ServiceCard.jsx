@@ -32,7 +32,7 @@ const ServiceCard = ({ service, index }) => {
         onMouseEnter={() => setVisible(true)} onMouseLeave={() => setVisible(false)} ref={divRef} onMouseMove={handleMouseMove}>
             <div
                 ref={glowRef}
-                className={`pointer-events-none blur-2xl rounded-full bg-gradient-to-r from-blue-500 to-purple-500 w-[50vw] sm:w-[300px] h-[50vw] sm:h-[300px] absolute z-0 transition-opacity duration-500 ${visible ? 'opacity-70' : 'opacity-0'} dark:mix-blend-lighten mix-blend-multiply`}
+                className={`pointer-events-none blur-xl rounded-full bg-gradient-to-r from-blue-500 to-purple-500 w-[50vw] sm:w-[300px] h-[50vw] sm:h-[300px] absolute z-0 transition-opacity duration-500 ${visible ? 'opacity-70' : 'opacity-0'} dark:mix-blend-lighten mix-blend-multiply`}
                 style={{ willChange: 'transform, opacity' }}
             />
             <div className='flex items-center gap-6 p-6 transition-transform rounded-[10px] bg-white dark:bg-gray-900 z-10 relative' style={{ willChange: 'transform, opacity' }}>

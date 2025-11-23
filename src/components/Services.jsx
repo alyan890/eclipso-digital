@@ -110,7 +110,7 @@ const Services = () => {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.2 }}
-              className="group relative flex flex-col items-center p-8 rounded-2xl bg-white/10 backdrop-blur-sm border border-white/10 hover:border-indigo-400/40 transition-all duration-400"
+              className="group relative flex flex-col items-center p-8 rounded-2xl bg-white/10 border border-white/10 hover:border-indigo-400/40 transition-all duration-400 shadow-lg"
               style={{ willChange: 'transform, opacity' }}
             >
               <motion.div
@@ -136,9 +136,9 @@ const Services = () => {
                 {service.desc}
               </p>
 
-              {/* soft hover glow */}
+              {/* soft hover glow (reduced blur for performance) */}
               <motion.div
-                className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition duration-700 blur-2xl -z-10"
+                className="absolute inset-0 rounded-2xl bg-gradient-to-r from-indigo-500/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition duration-700 blur-xl -z-10"
               ></motion.div>
             </motion.div>
           ))}
