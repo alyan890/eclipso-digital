@@ -47,16 +47,16 @@ const PromoModal = ({ theme }) => {
           <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={() => close(false)} />
 
           <motion.div
-            initial={{ scale: 0.92, opacity: 0 }}
+            initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.95, opacity: 0 }}
-            transition={{ duration: 0.35, ease: 'easeOut' }}
-            className={`relative z-10 w-[90%] max-w-2xl rounded-2xl shadow-2xl p-6 sm:p-8 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
-            style={{ border: '1px solid rgba(255,255,255,0.04)' }}
+            exit={{ scale: 0.98, opacity: 0 }}
+            transition={{ duration: 0.32, ease: 'easeOut' }}
+            className={`relative z-10 w-full mx-4 sm:mx-0 max-w-2xl sm:max-w-2xl rounded-none sm:rounded-2xl shadow-2xl p-4 sm:p-8 ${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
+            style={{ border: '1px solid rgba(255,255,255,0.04)', maxHeight: '90vh', overflowY: 'auto' }}
           >
-            <div className="flex items-start gap-4 sm:gap-6">
+            <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
               <div className="flex-shrink-0">
-                <img src={assets.logo} alt="logo" className="w-14 h-14 sm:w-16 sm:h-16" />
+                <img src={assets.logo} alt="logo" className="w-12 h-12 sm:w-16 sm:h-16" />
               </div>
 
               <div className="flex-1">
@@ -70,8 +70,8 @@ const PromoModal = ({ theme }) => {
                 </ul>
 
                 <div className="mt-6 flex flex-col sm:flex-row sm:items-center sm:gap-4 gap-3">
-                  <button onClick={handleContact} className="bg-amber-300 text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition">Claim 20% & Contact Us</button>
-                  <button onClick={() => close(true)} className={`px-5 py-3 rounded-full border ${theme === 'dark' ? 'border-gray-700 text-white' : 'border-gray-200 text-gray-700'}`}>Maybe later</button>
+                  <button onClick={handleContact} className="w-full sm:w-auto text-center bg-amber-300 text-black px-5 py-3 rounded-full font-semibold hover:scale-105 transition">Claim 20% & Contact Us</button>
+                  <button onClick={() => close(true)} className={`w-full sm:w-auto text-center px-5 py-3 rounded-full border ${theme === 'dark' ? 'border-gray-700 text-white' : 'border-gray-200 text-gray-700'}`}>Maybe later</button>
                 </div>
 
                 <label className="mt-3 inline-flex items-center text-xs opacity-80 cursor-pointer">
@@ -80,7 +80,7 @@ const PromoModal = ({ theme }) => {
               </div>
             </div>
 
-            <button aria-label="close" className="absolute top-3 right-3 text-xl opacity-70 hover:opacity-100" onClick={() => close(true)}>×</button>
+            <button aria-label="close" className="absolute top-3 right-3 p-2 rounded-full opacity-90 hover:opacity-100 bg-white/5 sm:bg-transparent" onClick={() => close(true)} style={{lineHeight:1}}>×</button>
           </motion.div>
         </motion.div>
       )}
