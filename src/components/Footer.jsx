@@ -1,76 +1,101 @@
 import React from 'react'
 import assets from '../assets/assets'
-import { delay, motion } from "framer-motion"
+import { motion } from "framer-motion"
 
 const Footer = ({ theme }) => {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className='bg-slate-100 dark:bg-gray-900/70 pt-10 sm:pt-10 mt-20 sm:mt-40 px-4 sm:px-10 lg:px-24 xl:px-40'>
-            <div className='flex justify-between lg:items-center max-lg:flex-col gap-10'>
-                <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    viewport={{ once: true }}
-                    className='space-y-5 text-sm text-gray-700 dark:text-gray-400'>
-                    <img
-                        src={theme === 'dark' ? assets.logo_dark : assets.logo}
-                        className='w-32 sm:w-44'
-                        alt=''
-                    />
-                    <p className='max-w-md'>
-                        From strategy to execution, we craft digital solutions that move your
-                        business forward.
-                    </p>
-                    <ul className='flex gap-8 justify-center lg:justify-start'>
-                        <li><a className='hover:text-primary' href="#hero">Home</a></li>
-                        <li><a className='hover:text-primary' href="#services">Services</a></li>
-                        <li><a className='hover:text-primary' href="#our-work">Our work</a></li>
-                        <li><a className='hover:text-primary' href="#contact-us">Contact us</a></li>
-                    </ul>
-                </motion.div>
-                <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className='text-gray-600 dark:text-gray-400'>
-                    <h3 className='font-semibold'>Subscribe to our newsletter</h3>
-                    <p className='text-sm mt-2 mb-6'>
-                        The latest news, articles, and resources, sent to your inbox weekly.
-                    </p>
-                    <div className='flex gap-2 text-sm'>
-                        <input
-                            type='email'
-                            placeholder='Enter your email'
-                            className='w-full p-3 text-sm outline-none rounded dark:text-gray-200 bg-transparent border border-gray-300 dark:border-gray-600'
-                        />
-                        <button className='bg-primary text-white rounded px-6'>Subscribe</button>
-                    </div>
-                </motion.div>
-            </div>
-            <hr className='border-gray-300 dark:border-gray-600 my-6' />
+  const bg = theme === 'dark' ? 'bg-black' : 'bg-black'
+  const text = theme === 'dark' ? 'text-white' : 'text-white'
+  const border = theme === 'dark' ? 'border-gray-600' : 'border-gray-300'
+  const inputText = theme === 'dark' ? 'text-gray-200' : 'text-gray-700'
 
-            <motion.div
-                initial={{ opacity: 0}}
-                whileInView={{ opacity: 1}}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                viewport={{ once: true }}
-                className='pb-6 text-sm text-gray-500 flex justify-center sm:justify-between gap-4 flex-wrap'>
-                <p className='hover:text-primary'>Copyright 2025 © agency.ai - All Right Reserved.</p>
-                <div className='flex items-center justify-between gap-4'>
-                    <img src={assets.facebook_icon} alt='' />
-                    <img src={assets.twitter_icon} alt='' />
-                    <img src={assets.instagram_icon} alt='' />
-                    <img src={assets.linkedin_icon} alt='' />
-                </div>
-            </motion.div>
+  return (
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }}
+      viewport={{ once: true }}
+      className={`${bg} ${text} pt-20 mt-20 px-6 sm:px-12 lg:px-24 xl:px-40`}>
+
+      {/* Top Section */}
+      <div className='flex flex-col lg:flex-row justify-between gap-12 lg:gap-20'>
+        {/* Logo + About */}
+        <motion.div
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          viewport={{ once: true }}
+          className='flex-1 space-y-5'>
+
+          <img
+            src={theme === 'dark' ? assets.logo_dark : assets.logo}
+            alt='Logo'
+            className='w-36 sm:w-44'
+          />
+          <div className='flex gap-4'>
+            <a href="#"><img src={assets.facebook_icon} alt='Facebook' className='w-5 h-5 hover:opacity-80 transition'/></a>
+            <a href="#"><img src={assets.twitter_icon} alt='Twitter' className='w-5 h-5 hover:opacity-80 transition'/></a>
+            <a href="#"><img src={assets.instagram_icon} alt='Instagram' className='w-5 h-5 hover:opacity-80 transition'/></a>
+            <a href="#"><img src={assets.linkedin_icon} alt='LinkedIn' className='w-5 h-5 hover:opacity-80 transition'/></a>
+          </div>
         </motion.div>
-    )
+
+        {/* Links Section */}
+        <motion.div
+          initial={{ opacity: 0, x: 30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
+          viewport={{ once: true }}
+          className='flex flex-wrap flex-1 justify-between gap-8'>
+
+          {/* Company */}
+          <div>
+            <h4 className='font-semibold mb-3 mt-10'>Company</h4>
+            <ul className='space-y-2 text-sm'>
+              <li><a href="#about" className='hover:text-primary transition-colors'>About Us</a></li>
+              <li><a href="#team" className='hover:text-primary transition-colors'>Team</a></li>
+              <li><a href="#careers" className='hover:text-primary transition-colors'>Careers</a></li>
+              <li><a href="#contact-us" className='hover:text-primary transition-colors'>Contact</a></li>
+            </ul>
+          </div>
+
+          {/* Services */}
+          <div>
+            <h4 className='font-semibold mb-3 mt-10'>Services</h4>
+            <ul className='space-y-2 text-sm'>
+              <li><a href="#web-dev" className='hover:text-primary transition-colors'>Web Development</a></li>
+              <li><a href="#app-dev" className='hover:text-primary transition-colors'>App Development</a></li>
+              <li><a href="#ui-ux" className='hover:text-primary transition-colors'>UI/UX Design</a></li>
+              <li><a href="#digital-marketing" className='hover:text-primary transition-colors'>Digital Marketing</a></li>
+            </ul>
+          </div>
+
+          {/* Resources */}
+          <div>
+            <h4 className='font-semibold mb-3 mt-10'>Resources</h4>
+            <ul className='space-y-2 text-sm'>
+              <li><a href="#blog" className='hover:text-primary transition-colors'>Blog</a></li>
+              <li><a href="#guides" className='hover:text-primary transition-colors'>Guides</a></li>
+              <li><a href="#faq" className='hover:text-primary transition-colors'>FAQ</a></li>
+              <li><a href="#support" className='hover:text-primary transition-colors'>Support</a></li>
+            </ul>
+          </div>
+
+        
+        </motion.div>
+      </div>
+
+      {/* Bottom Section */}
+      <hr className={`border ${border} my-8`} />
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }}
+        viewport={{ once: true }}
+        className='flex flex-col sm:flex-row justify-center items-center gap-4 text-amber-300 text-lg'>
+        <p>© 2023 | All rights reserved.</p>
+      </motion.div>
+    </motion.footer>
+  )
 }
 
 export default React.memo(Footer)
