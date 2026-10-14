@@ -26,6 +26,12 @@ const Footer = ({ theme }) => {
                         From strategy to execution, we craft digital solutions that move your
                         business forward.
                     </p>
+                    <p className='max-w-md'>
+                        Eclipso Lead Engine is our private tool for organizing public business
+                        leads, sending approved introductions, and tracking replies and opt-outs
+                        through our own Gmail account.{' '}
+                        <a className='underline hover:text-primary' href='/lead-engine/'>About the Lead Engine</a>
+                    </p>
                     <ul className='flex gap-8 justify-center lg:justify-start'>
                         <li><a className='hover:text-primary' href="#hero">Home</a></li>
                         <li><a className='hover:text-primary' href="#services">Services</a></li>
@@ -61,7 +67,11 @@ const Footer = ({ theme }) => {
                 transition={{ duration: 0.5, delay: 0.4 }}
                 viewport={{ once: true }}
                 className='pb-6 text-sm text-gray-500 flex justify-center sm:justify-between gap-4 flex-wrap'>
-                <p className='hover:text-primary'>Copyright 2025 © agency.ai - All Right Reserved.</p>
+                <p>Copyright {new Date().getFullYear()} © Eclipso Digital.</p>
+                <nav aria-label='Legal information' className='flex flex-wrap gap-4'>
+                    <a className='underline hover:text-primary' href='/privacy/'>Privacy Policy</a>
+                    <a className='underline hover:text-primary' href='/terms/'>Terms of Use</a>
+                </nav>
                 <div className='flex items-center justify-between gap-4'>
                     <img src={assets.facebook_icon} alt='' />
                     <img src={assets.twitter_icon} alt='' />

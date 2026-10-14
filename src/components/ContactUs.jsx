@@ -88,6 +88,11 @@ const ContactUs = () => {
                         required
                     />
                 </div>
+                <p className='sm:col-span-2 text-sm text-gray-600 dark:text-gray-400'>
+                    Your name, email, and message are processed through Web3Forms to handle
+                    your enquiry. Please avoid sending passwords or sensitive information.{' '}
+                    <a className='underline' href='/privacy/'>Read our Privacy Policy</a>.
+                </p>
                 <button
                     type='submit'
                     className='w-max flex gap-2 bg-primary text-white text-sm px-10 py-3 rounded-full cursor-pointer hover:scale-103 transition-all'

@@ -1,0 +1,24 @@
+:root { color-scheme: dark; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #151727; color: #f4f4f8; }
+* { box-sizing: border-box; }
+body { margin: 0; line-height: 1.75; }
+a { color: #ffcf32; text-underline-offset: .22em; }
+a:hover { color: #fff0b0; }
+a:focus-visible { outline: 3px solid #ffcf32; outline-offset: 5px; border-radius: 3px; }
+.skip-link { position: absolute; left: 1rem; top: -10rem; padding: .6rem 1rem; background: #151727; }
+.skip-link:focus { top: 1rem; }
+header, main, footer { max-width: 900px; margin: auto; padding: 1.5rem; }
+header { display: flex; justify-content: space-between; flex-wrap: wrap; align-items: center; gap: 1rem; border-bottom: 1px solid #383b50; }
+.brand { color: #ffcf32; font-size: 1.1rem; font-weight: 750; letter-spacing: .08em; text-decoration: none; }
+nav { display: flex; gap: 1.2rem; flex-wrap: wrap; font-size: .95rem; }
+main { padding-top: 3rem; padding-bottom: 3rem; }
+h1 { font-size: clamp(2rem, 6vw, 3rem); line-height: 1.18; letter-spacing: -.035em; margin: .5rem 0 1rem; }
+h2 { font-size: 1.3rem; line-height: 1.4; margin: 2.2rem 0 .7rem; color: #fff; }
+p, li { color: #c9cbda; }
+li { margin: .35rem 0; }
+.eyebrow { color: #ffcf32; font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .14em; }
+.updated { color: #a9aec5; font-size: .9rem; }
+.notice { border: 1px solid #464052; border-left: 3px solid #ffcf32; border-radius: 8px; padding: 1rem 1.2rem; background: #1b1e31; margin: 1.5rem 0; }
+.notice p { margin: .3rem 0; }
+footer { border-top: 1px solid #383b50; padding-bottom: 2rem; font-size: .9rem; }
+@media (max-width: 480px) { header, main, footer { padding-left: 1.2rem; padding-right: 1.2rem; } nav { gap: .8rem; } main { padding-top: 2rem; } }
+@media print { :root { color-scheme: light; background: white; color: black; } p, li, h2, .updated { color: black; } a { color: black; } .notice { background: white; } }
