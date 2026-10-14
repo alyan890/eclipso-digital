@@ -1,86 +1,66 @@
 import React from 'react'
 import assets from '../assets/assets'
-import { delay, motion } from "framer-motion"
+import { motion } from 'framer-motion'
 
 const Footer = ({ theme }) => {
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className='bg-slate-100 dark:bg-gray-900/70 pt-10 sm:pt-10 mt-20 sm:mt-40 px-4 sm:px-10 lg:px-24 xl:px-40'>
-            <div className='flex justify-between lg:items-center max-lg:flex-col gap-10'>
-                <motion.div
-                    initial={{ opacity: 0, x: -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    viewport={{ once: true }}
-                    className='space-y-5 text-sm text-gray-700 dark:text-gray-400'>
-                    <img
-                        src={theme === 'dark' ? assets.logo_dark : assets.logo}
-                        className='w-32 sm:w-44'
-                        alt=''
-                    />
-                    <p className='max-w-md'>
-                        From strategy to execution, we craft digital solutions that move your
-                        business forward.
-                    </p>
-                    <p className='max-w-md'>
-                        Eclipso Lead Engine is our private tool for organizing public business
-                        leads, sending approved introductions, and tracking replies and opt-outs
-                        through our own Gmail account.{' '}
-                        <a className='underline hover:text-primary' href='/lead-engine/'>About the Lead Engine</a>
-                    </p>
-                    <ul className='flex gap-8 justify-center lg:justify-start'>
-                        <li><a className='hover:text-primary' href="#hero">Home</a></li>
-                        <li><a className='hover:text-primary' href="#services">Services</a></li>
-                        <li><a className='hover:text-primary' href="#our-work">Our work</a></li>
-                        <li><a className='hover:text-primary' href="#contact-us">Contact us</a></li>
-                    </ul>
-                </motion.div>
-                <motion.div
-                    initial={{ opacity: 0, x: 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className='text-gray-600 dark:text-gray-400'>
-                    <h3 className='font-semibold'>Subscribe to our newsletter</h3>
-                    <p className='text-sm mt-2 mb-6'>
-                        The latest news, articles, and resources, sent to your inbox weekly.
-                    </p>
-                    <div className='flex gap-2 text-sm'>
-                        <input
-                            type='email'
-                            placeholder='Enter your email'
-                            className='w-full p-3 text-sm outline-none rounded dark:text-gray-200 bg-transparent border border-gray-300 dark:border-gray-600'
-                        />
-                        <button className='bg-primary text-white rounded px-6'>Subscribe</button>
-                    </div>
-                </motion.div>
-            </div>
-            <hr className='border-gray-300 dark:border-gray-600 my-6' />
+  const border = theme === 'dark' ? 'border-gray-600' : 'border-gray-300'
+  const linkGroups = [
+    { title: 'Company', links: [['About Us', '#about'], ['Team', '#team'], ['Careers', '#careers'], ['Contact', '#contact-us']] },
+    { title: 'Services', links: [['Web Development', '#web-dev'], ['App Development', '#app-dev'], ['UI/UX Design', '#ui-ux'], ['Digital Marketing', '#digital-marketing']] },
+    { title: 'Resources', links: [['Blog', '#blog'], ['Guides', '#guides'], ['FAQ', '#faq'], ['Support', '#support']] },
+  ]
 
-            <motion.div
-                initial={{ opacity: 0}}
-                whileInView={{ opacity: 1}}
-                transition={{ duration: 0.5, delay: 0.4 }}
-                viewport={{ once: true }}
-                className='pb-6 text-sm text-gray-500 flex justify-center sm:justify-between gap-4 flex-wrap'>
-                <p>Copyright {new Date().getFullYear()} © Eclipso Digital.</p>
-                <nav aria-label='Legal information' className='flex flex-wrap gap-4'>
-                    <a className='underline hover:text-primary' href='/privacy/'>Privacy Policy</a>
-                    <a className='underline hover:text-primary' href='/terms/'>Terms of Use</a>
-                </nav>
-                <div className='flex items-center justify-between gap-4'>
-                    <img src={assets.facebook_icon} alt='' />
-                    <img src={assets.twitter_icon} alt='' />
-                    <img src={assets.instagram_icon} alt='' />
-                    <img src={assets.linkedin_icon} alt='' />
-                </div>
-            </motion.div>
+  return (
+    <motion.footer
+      initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8 }} viewport={{ once: true }}
+      className='bg-black text-white pt-20 mt-20 px-6 sm:px-12 lg:px-24 xl:px-40'>
+      <div className='flex flex-col lg:flex-row justify-between gap-12 lg:gap-20'>
+        <motion.div
+          initial={{ opacity: 0, x: -30 }} whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.2 }} viewport={{ once: true }}
+          className='flex-1 space-y-5'>
+          <img src={theme === 'dark' ? assets.logo_dark : assets.logo} alt='Eclipso Digital' className='w-36 sm:w-44' />
+          <p className='max-w-md text-sm text-gray-300'>
+            Eclipso Lead Engine is our private tool for organizing public business
+            leads, sending approved introductions, and tracking replies and opt-outs
+            through our own Gmail account.{' '}
+            <a className='underline hover:text-primary' href='/lead-engine/'>About the Lead Engine</a>
+          </p>
+          <div className='flex gap-4'>
+            <a href='#'><img src={assets.facebook_icon} alt='Facebook' className='w-5 h-5 hover:opacity-80 transition' /></a>
+            <a href='#'><img src={assets.twitter_icon} alt='Twitter' className='w-5 h-5 hover:opacity-80 transition' /></a>
+            <a href='#'><img src={assets.instagram_icon} alt='Instagram' className='w-5 h-5 hover:opacity-80 transition' /></a>
+            <a href='#'><img src={assets.linkedin_icon} alt='LinkedIn' className='w-5 h-5 hover:opacity-80 transition' /></a>
+          </div>
         </motion.div>
-    )
+        <motion.div
+          initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.7, delay: 0.3 }} viewport={{ once: true }}
+          className='flex flex-wrap flex-1 justify-between gap-8'>
+          {linkGroups.map(group => (
+            <div key={group.title}>
+              <h4 className='font-semibold mb-3 mt-10'>{group.title}</h4>
+              <ul className='space-y-2 text-sm'>
+                {group.links.map(([label, href]) => <li key={label}><a href={href} className='hover:text-primary transition-colors'>{label}</a></li>)}
+              </ul>
+            </div>
+          ))}
+        </motion.div>
+      </div>
+      <hr className={`border ${border} my-8`} />
+      <motion.div
+        initial={{ opacity: 0 }} whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6, delay: 0.4 }} viewport={{ once: true }}
+        className='flex flex-col sm:flex-row justify-center items-center gap-4 text-amber-300 text-sm pb-6'>
+        <p>Copyright {new Date().getFullYear()} © Eclipso Digital.</p>
+        <nav aria-label='Legal information' className='flex flex-wrap gap-4'>
+          <a className='underline hover:text-primary' href='/privacy/'>Privacy Policy</a>
+          <a className='underline hover:text-primary' href='/terms/'>Terms of Use</a>
+        </nav>
+      </motion.div>
+    </motion.footer>
+  )
 }
 
 export default React.memo(Footer)
